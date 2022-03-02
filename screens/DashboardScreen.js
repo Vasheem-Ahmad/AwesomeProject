@@ -28,12 +28,12 @@ const Dashboard = ({navigation}) => (
                 </Animatable.View> 
 
                 <View style = {styles.card}>
-                    <Image style = {styles.cardimg} source={require('../android/app/src/images/VE_Background_Image_Calls_2.png')} />
+                    <Image style = {styles.cardimg} source={require('../assets/images/VE_Background_Image_Calls_2.png')} />
                     <Text style = {styles.cardtitle}>Welcome to the card board of team where everything is given in brief.</Text>
                     <Text style = {styles.cardbtn} onPress = {() => Alert.alert('Everthing is Good')}> Read More <FontAwesome5 name={'chevron-right'} size={9} color="#fff"></FontAwesome5></Text>
                 </View>
                 <View style = {styles.card}>
-                    <Image style = {styles.cardimg} source={require('../android/app/src/images/Main-Banner.jpeg')} />
+                    <Image style = {styles.cardimg} source={require('../assets/images/Main-Banner.jpeg')} />
                     <Text style = {styles.cardtitle}>Welcome to the card board of team where everything is given in brief.</Text>
                     <Text style = {styles.cardbtn}> Read More <FontAwesome5 name={'chevron-right'} size={9} color="#fff"></FontAwesome5></Text>
                 </View> 

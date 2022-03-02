@@ -5,7 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import {Picker} from '@react-native-picker/picker';
 
-const LogInScreen = ({navigation}) => {
+const Contact = ({navigation}) => {
     const [selectedLanguage, setSelectedLanguage] = useState();
 
     return (
@@ -67,7 +67,7 @@ const LogInScreen = ({navigation}) => {
     )
 }
 
-export default LogInScreen;
+export default Contact;
 
 const styles = StyleSheet.create ({
     formwrapper: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create ({
     selectcover: {
         borderColor: '#ccc',
         borderWidth: 1,
-        borderRadius: 3,  
+        borderRadius: 3,
     },
     selectinput: {
         color: '#000',

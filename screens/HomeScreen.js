@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Button, View, ScrollView, Text, Alert, ImageBackground, Image, Modal, Pressable, RefreshControl, ActivityIndicator } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-
+import Speedometer from 'react-native-speedometer-chart';
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -18,125 +18,159 @@ const Home = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(true);
 
     return (
-    <ScrollView style = {styles.ScrollView} refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-    }>
-        
-        <ScrollView horizontal={true}  style = {styles.newsfeed}>
-            <View style={[styles.avatarbox, styles.active]}>
-                <Animatable.Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar1.png')} />
-                <Text style={styles.updateavatar}>+</Text>
-            </View>
+        <ScrollView style = {styles.ScrollView} refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
             
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
+            <ScrollView horizontal={true}  style = {styles.newsfeed}>
+                <View style={[styles.avatarbox, styles.active]}>
+                    <Animatable.Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar1.png')} />
+                    <Text style={styles.updateavatar}>+</Text>
+                </View>
+                
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar1.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar1.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+
+                <View style={styles.avatarbox}>
+                    <Image animation="zoomIn" style={styles.avatar} source={require('../assets/images/Avatar2.png')} />
+                </View>
+            </ScrollView>
+            
+            <View style = {{ flexDirection: 'row', justifyContent: 'center', backgroundColor: "#fff", padding: 20 }}>
+                <Animatable.View animation="fadeInLeft">
+                    <Speedometer value={100} totalValue={150} size={250}
+                    outerColor="#ccc" 
+                    internalColor="green" 
+                    innerColor="lightblue" 
+                    showIndicator 
+                    indicatorColor="#808080"
+                    // showText
+                    // text="50.00"
+                    textStyle={{ color: 'green' }} showLabels labelStyle={{ color: 'blue' }}
+                    labelFormatter={number => `${number}%`}
+                    // showPercent
+                    percentStyle={{ color: 'red' }} percentSize={0.7}
+                    />
+                </Animatable.View>
             </View>
 
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar1.png')} />
+            <View style = {styles.iwtcontainer}>
+                <ImageBackground source={require('../assets/images/Main-Banner.jpeg')} resizeMode="cover" style={styles.bgimage}>
+                    <Text style={styles.overlaytext}>Overlay Text</Text>
+                </ImageBackground>
             </View>
 
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
-            </View>
-
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar1.png')} />
-            </View>
-
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
-            </View>
-
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
-            </View>
-
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
-            </View>
-
-            <View style={styles.avatarbox}>
-                <Image animation="zoomIn" style={styles.avatar} source={require('../android/app/src/images/Avatar2.png')} />
-            </View>
-        </ScrollView>
-
-        <View style = {styles.iwtcontainer}>
-            <ImageBackground source={require('../android/app/src/images/Main-Banner.jpeg')} resizeMode="cover" style={styles.bgimage}>
-                <Text style={styles.overlaytext}>Overlay Text</Text>
-            </ImageBackground>
-        </View>
-
-        <View style={styles.card}>
-            <Text style={styles.title}>
-                All interaction for the component are disabled. Loirem Ipsum is dummy text also. Interaction for the component are disabled. Loirem Ipsum is dummy text also.
-            </Text>
-            <Button title="Get Started" color="lightblue" />
-        </View>
-
-        <ImageBackground style={styles.bgimg} source={require('../android/app/src/images/VE_Background_Image_Calls_2.png')}></ImageBackground>
-        
-        <View style={styles.card}> 
-            <Text style={styles.title}>
-                Adjust the color in a way that looks standard on each platform. On  iOS, the color prop controls the color of the text. On Android, the color adjusts the background color of the button.
-            </Text>
-            <Button
-                title="Press me"
-                color="#f194ff"
-                onPress={() => Alert.alert('Button with adjusted color pressed')}
-            />
-        </View>
- 
-        <View style={styles.card}>
-            <Text style={styles.title}>
-                This layout strategy lets the title define the width of the button.
-            </Text>
-            <View style={styles.fixToText}>
-                <Button
-                title="Left button"
-                onPress={() => Alert.alert('Left button pressed')}
-                />
-                <Button
-                title="Right button"
-                onPress={() => Alert.alert('Right button pressed')}
-                />
-            </View>
-        </View>
-
-        <View style = {styles.imgcover}>
-        <ImageBackground style={styles.bgimg} source={require('../android/app/src/images/VE_Background_Image_Calls_2.png')}></ImageBackground>
             <View style={styles.card}>
                 <Text style={styles.title}>
-                The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
+                    All interaction for the component are disabled. Loirem Ipsum is dummy text also. Interaction for the component are disabled. Loirem Ipsum is dummy text also.
+                </Text>
+                <Button title="Get Started" color="lightblue" onPress = {() => navigation.navigate('GetStarted')} />
+            </View>
+
+            <ImageBackground style={styles.bgimg} source={require('../assets/images/VE_Background_Image_Calls_2.png')}></ImageBackground>
+            
+            <View style={styles.card}> 
+                <Text style={styles.title}>
+                    Adjust the color in a way that looks standard on each platform. On  iOS, the color prop controls the color of the text. On Android, the color adjusts the background color of the button.
                 </Text>
                 <Button
-                title="Press me"
-                onPress={() => Alert.alert('Simple Button pressed')}
+                    title="Press me"
+                    color="#f194ff"
+                    onPress={() => Alert.alert('Button with adjusted color pressed')}
                 />
             </View>
-        </View>
-
-        <View style={styles.centeredView}>
-            <Modal animationType="slide" transparent={true} visible={modalVisible}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
-                        <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(false)}>
-                          <Text style={styles.textStyle}>Hide Modal</Text>
-                        </Pressable>
-                    </View>
+    
+            <View style={styles.card}>
+                <Text style={styles.title}>
+                    This layout strategy lets the title define the width of the button.
+                </Text>
+                <View style={styles.fixToText}>
+                    <Button
+                    title="Left button"
+                    onPress={() => Alert.alert('Left button pressed')}
+                    />
+                    <Button
+                    title="Right button"
+                    onPress={() => Alert.alert('Right button pressed')}
+                    />
                 </View>
-            </Modal>
-        </View>
+            </View>
 
-        <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
-            <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
+            <View style = {styles.imgcover}>
+            <ImageBackground style={styles.bgimg} source={require('../assets/images/VE_Background_Image_Calls_2.png')}></ImageBackground>
+                <View style={styles.card}>
+                    <Text style={styles.title}>
+                    The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
+                    </Text>
+                    <Button
+                    title="Press me"
+                    onPress={() => Alert.alert('Simple Button pressed')}
+                    />
+                </View>
+            </View>
 
-        <ActivityIndicator size='large' color='red' animating={true}></ActivityIndicator>
-    </ScrollView>
+            <View style={styles.centeredView}>
+                <Modal animationType="slide" transparent={true} visible={modalVisible}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Hello World!</Text>
+                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(false)}>
+                            <Text style={styles.textStyle}>Hide Modal</Text>
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+
+            <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
+                <Text style={styles.textStyle}>Show Modal</Text>
+            </Pressable>
+
+            <Animatable.View animation="rotate" iterationCount="infinite" duration={1000} 
+                style={{ 
+                    height: 50, 
+                    width: 50, 
+                    borderStyle: 'solid', 
+                    borderWidth: 13, 
+                    borderRadius: 55, 
+                    // position: 'absolute', top: 130, zIndex: -9,   
+                    borderTopColor: "blue",
+                    borderRightColor: "green",
+                    borderBottomColor: "red",
+                    borderLeftColor: "pink",
+                    overflow: 'hidden'
+                }}>
+            </Animatable.View>
+
+            <ActivityIndicator size='large' color='red' animating={true}></ActivityIndicator>
+        </ScrollView>
     )
-    }
+}
 
 export default Home;
 

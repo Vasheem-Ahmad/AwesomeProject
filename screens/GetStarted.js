@@ -3,33 +3,34 @@ import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
-
    
-const GetStarted = ({navigation}) => (
-    <View style = {styles.formwrapper}>
-        <View style = {styles.imgsec}>
-            <Animatable.View animation="zoomIn" style = {styles.shadowbox}>
-                <Image style={styles.userimg} source={require('../android/app/src/images/Shopify-Logo1.png')} />
+const GetStarted = ({navigation}) => {
+    return (
+        <View style = {styles.formwrapper}>
+            <View style = {styles.imgsec}>
+                <Animatable.View animation="zoomIn" style = {styles.shadowbox}>
+                    <Image style={styles.userimg} source={require('../assets/images/Shopify-Logo1.png')} />
+                </Animatable.View>
+
+                <Text style={{ fontSize: 12, fontStyle: "italic", color: "#fff", textAlign: "center", }}>
+                    World's best eCommerce plateform for selling products and for dropshipping.
+                </Text>
+            </View>
+
+            <Animatable.View animation="fadeInUp" style = {styles.textsec}>
+                <Text style={styles.headtext}>Welcome to the eComerce world</Text>
+                <Text style={styles.titletext}>Stay connected with everyone</Text>
+                <Text style={styles.subtitletext}>Sign in with account</Text>
+                <TouchableOpacity style = {styles.submitButton}
+                onPress = {() => navigation.navigate('SignUpScreen')}>
+                <LinearGradient colors={['green', '#008060' ]} style = {styles.gradbtn}>
+                    <Text style = {styles.submitButtonText}> Get Started <FontAwesome5 name={'chevron-right'} size={11} color="#fff"></FontAwesome5></Text>
+                </LinearGradient>
+                </TouchableOpacity>
             </Animatable.View>
-
-            <Text style={{ fontSize: 12, fontStyle: "italic", color: "#fff", textAlign: "center", }}>
-                World's best eCommerce plateform for selling products and for dropshipping.
-            </Text>
         </View>
-
-        <Animatable.View animation="fadeInUp" style = {styles.textsec}>
-            <Text style={styles.headtext}>Welcome to the eComerce world</Text>
-            <Text style={styles.titletext}>Stay connected with everyone</Text>
-            <Text style={styles.subtitletext}>Sign in with account</Text>
-            <TouchableOpacity style = {styles.submitButton}
-            onPress = {() => navigation.navigate('SignUpScreen')}>
-            <LinearGradient colors={['green', '#008060' ]} style = {styles.gradbtn}>
-                <Text style = {styles.submitButtonText}> Get Started <FontAwesome5 name={'chevron-right'} size={11} color="#fff"></FontAwesome5></Text>
-            </LinearGradient>
-            </TouchableOpacity>
-        </Animatable.View>
-    </View>
-);
+    );
+}
 
 export default GetStarted;
 
@@ -55,11 +56,6 @@ const styles = StyleSheet.create ({
         borderColor: '#7bc527',
         borderRadius: 100, 
         marginBottom: 20,
-        // shadowColor: "#000",
-        // shadowOffset: { width: 0, height: 3, },
-        // shadowOpacity: 0.29,
-        // shadowRadius: 4.65,
-        // elevation: 7,
     },
     userimg: {
         maxHeight: 150,
