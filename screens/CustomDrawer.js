@@ -22,8 +22,8 @@ function CustomDrawerContent(props) {
                     </View>
                 </View>
                 <DrawerItemList  {...props}/>
-                
             </DrawerContentScrollView>
+            
             <View style={ styles.drawerfooter }>
                 <View style={styles.footeritems}>
                     <FontAwesome5 name={'share-alt'} size={14} color={'#EFFFD5'}></FontAwesome5> 

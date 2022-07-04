@@ -31,6 +31,16 @@ export default class Myapp extends Component{
                     <Image source={{uri:'https://static.javatpoint.com/tutorial/react-native/images/react-native-tutorial.png'}}  
                     style={{width:'100%', height: '100%', resizeMode: 'contain'}} />  
                 </View>  
+                <TouchableOpacity 
+                  activeOpacity = { 0.5 }
+                  style={styles.TouchableOpacity_Style}
+                  onPress={this.Hide_Splash_Screen} >
+
+                    <Image source={{uri: 'https://reactnativecode.com/wp-content/uploads/2018/01/close_button.png'}}
+                    style={{width:25, height: 25}} />
+
+                </TouchableOpacity>
+
             </View> 
         )  
         return(  

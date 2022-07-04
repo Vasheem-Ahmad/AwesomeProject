@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, ScrollView, TextInput, StyleSheet, Alert, Switch } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, TextInput, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView, } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,67 +9,76 @@ const LogInScreen = ({navigation}) => {
     const [selectedLanguage, setSelectedLanguage] = useState();
 
     return (
-        <ScrollView>
-            <View style = {styles.formwrapper}>
-                <View style = {styles.imgsec}>
-                    <Text style={{ fontSize: 22, fontWeight: '600', color: "#fff", textAlign: "left", }}>
-                        Please login here!
-                    </Text>
-                </View>
-
-                <Animatable.View animation="fadeInUp" style = {styles.textsec}>
-                    <View style = {styles.inputcover}>
-                        <Text style = {styles.inputlabel}>Email <Text style = {styles.important}>*</Text></Text>
-                        <View style = {styles.inputiconcover}>
-                            <FontAwesome5 name={'envelope'} size={12} color="#ccc"></FontAwesome5>
-                            <TextInput style = {styles.input} autoCompleteType='email'
-                            placeholder = "Email" placeholderTextColor = "#ccc"/>
+        <SafeAreaView style={styles.container}>
+            <KeyboardAvoidingView behavior='position'>
+                <ScrollView style={{backgroundColor:'#fff'}}>
+                    <View style = {styles.formwrapper}>
+                        <View style = {styles.imgsec}>
+                            <Text style={{ fontSize: 22, fontWeight: '600', color: "#fff", textAlign: "left", }}>
+                                Please login here!
+                            </Text>
                         </View>
+
+                        <Animatable.View animation="fadeInUp" style = {styles.textsec}>
+                            <View style = {styles.inputcover}>
+                                <Text style = {styles.inputlabel}>Email <Text style = {styles.important}>*</Text></Text>
+                                <View style = {styles.inputiconcover}>
+                                    <FontAwesome5 name={'envelope'} size={12} color="#ccc"></FontAwesome5>
+                                    <TextInput style = {styles.input} autoCompleteType='email'
+                                    placeholder = "Email" placeholderTextColor = "#ccc"/>
+                                </View>
+                            </View>
+
+                            <View style = {styles.inputcover}>
+                                <Text style = {styles.inputlabel}>Password <Text style = {styles.important}>*</Text></Text>
+                                <View style = {styles.inputiconcover}>
+                                    <FontAwesome5 name={'eye'} size={12} color="#ccc"></FontAwesome5>
+                                    <TextInput style = {styles.input} secureTextEntry={true} keyboardType='numeric'
+                                    placeholder = "Password" placeholderTextColor = "#ccc" />
+                                </View>
+                            </View>
+
+                            <View style = {styles.inputcover}>
+                                <Text style = {styles.inputlabel}>Select Course <Text style = {styles.important}>*</Text></Text>
+                                <View style = {styles.selectcover}>
+                                    <Picker style = {{ color: '#ccc' }}
+                                        selectedValue={selectedLanguage}
+                                        onValueChange={(itemValue, itemIndex) =>
+                                            setSelectedLanguage(itemValue)
+                                        }>
+                                        <Picker.Item style={styles.selectinput} label="Java" value="java" />
+                                        <Picker.Item style={styles.selectinput} label="JavaScript" value="js" />
+                                    </Picker>
+                                </View>
+                            </View>
+
+                            <TouchableOpacity style = {styles.submitButton} onPress = {() => navigation.navigate('Dashboard')}>
+                                <LinearGradient colors={[ '#008060', '#008060' ]} style = {styles.gradbtn}>
+                                    <Text style = {styles.submitButtonText}> Sign In </Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style = {styles.submitButton} onPress = {() => navigation.goBack()}>
+                                <View style = {styles.gradbtn}>
+                                    <Text style = {[styles.submitButtonText, styles.textgreen]}> Sign Up </Text>
+                                </View>
+                            </TouchableOpacity>
+                        </Animatable.View>
                     </View>
-
-                    <View style = {styles.inputcover}>
-                        <Text style = {styles.inputlabel}>Password <Text style = {styles.important}>*</Text></Text>
-                        <View style = {styles.inputiconcover}>
-                            <FontAwesome5 name={'eye'} size={12} color="#ccc"></FontAwesome5>
-                            <TextInput style = {styles.input} secureTextEntry={true} keyboardType='numeric'
-                            placeholder = "Password" placeholderTextColor = "#ccc" />
-                        </View>
-                    </View>
-
-                    <View style = {styles.inputcover}>
-                        <Text style = {styles.inputlabel}>Select Course <Text style = {styles.important}>*</Text></Text>
-                        <View style = {styles.selectcover}>
-                            <Picker style = {{ color: '#ccc' }}
-                                selectedValue={selectedLanguage}
-                                onValueChange={(itemValue, itemIndex) =>
-                                    setSelectedLanguage(itemValue)
-                                }>
-                                <Picker.Item style={styles.selectinput} label="Java" value="java" />
-                                <Picker.Item style={styles.selectinput} label="JavaScript" value="js" />
-                            </Picker>
-                        </View>
-                    </View>
-
-                    <TouchableOpacity style = {styles.submitButton} onPress = {() => navigation.navigate('Dashboard')}>
-                        <LinearGradient colors={[ '#008060', '#008060' ]} style = {styles.gradbtn}>
-                            <Text style = {styles.submitButtonText}> Sign In </Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style = {styles.submitButton} onPress = {() => navigation.goBack()}>
-                        <View style = {styles.gradbtn}>
-                            <Text style = {[styles.submitButtonText, styles.textgreen]}> Sign Up </Text>
-                        </View>
-                    </TouchableOpacity>
-                </Animatable.View>
-            </View>
-        </ScrollView>
+                </ScrollView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 }
 
 export default LogInScreen;
 
 const styles = StyleSheet.create ({
+    container: {
+        // flex: 1,
+        // height: '100%',
+        // width: '100%',
+    },
     formwrapper: {
         backgroundColor: '#008060',
         textAlign: 'center',

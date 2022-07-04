@@ -15,7 +15,7 @@ import SearchBar from './screens/SearchBar';
 import GallerySlider from './screens/GalleryScreen';
 import Contact from './screens/ContactScreen';
 import CustomDrawerContent from './screens/CustomDrawer';
-import Myapp from './screens/SplashScreen';
+// import Myapp from './screens/SplashScreen';
 
 // Stack Navigation
 const Stack = createStackNavigator();
@@ -48,8 +48,8 @@ function MyDrawer() {
                 drawerActiveTintColor: 'yellow',
                 drawerInactiveTintColor: '#fff',
                 drawerType: 'front',
-                drawerItemStyle: { padding: 0, },
-                drawerLabelStyle: { marginLeft: -24, fontSize: 12 }
+                drawerItemStyle: { padding: 0},
+                drawerLabelStyle: { marginLeft: -24,fontSize: 12, }
             }}>
             <Drawer.Screen name="StackNav" title="Go to main" component={MyStack} options={{ drawerLabel: 'My Home', drawerIcon: ({ focused }) => (<FontAwesome5 name={'home'} size={14} color={focused ? 'yellow' : '#fff'}></FontAwesome5>) }} />
             <Drawer.Screen name="GallerySlider" component={GallerySlider} options={{ drawerLabel: 'About Us', drawerIcon: ({ focused }) => (<FontAwesome5 name={'home'} size={14} color={focused ? 'yellow' : '#fff'}></FontAwesome5>) }}/>
